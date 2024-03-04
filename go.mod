@@ -1,4 +1,4 @@
-module simplebank
+module github.com/ltcong1411/simplebank
 
 go 1.20
 
