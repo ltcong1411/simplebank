@@ -7,7 +7,7 @@ import (
 
 	"github.com/gin-gonic/gin"
 
-	db "github.com/ltcong1411/simplebank/db/sqlc"
+	db "simplebank/db/sqlc"
 )
 
 type createTransferRequest struct {

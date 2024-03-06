@@ -5,7 +5,7 @@ import (
 	"github.com/gin-gonic/gin/binding"
 	"github.com/go-playground/validator/v10"
 
-	db "github.com/ltcong1411/simplebank/db/sqlc"
+	db "simplebank/db/sqlc"
 )
 
 // Server serves HTTP requests for our banking service.

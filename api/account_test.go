@@ -13,9 +13,9 @@ import (
 	"github.com/stretchr/testify/require"
 	"go.uber.org/mock/gomock"
 
-	mockdb "github.com/ltcong1411/simplebank/db/mock"
-	db "github.com/ltcong1411/simplebank/db/sqlc"
-	"github.com/ltcong1411/simplebank/util"
+	mockdb "simplebank/db/mock"
+	db "simplebank/db/sqlc"
+	"simplebank/util"
 )
 
 func TestGetAccountAPI(t *testing.T) {
