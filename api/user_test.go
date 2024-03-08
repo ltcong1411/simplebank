@@ -223,7 +223,7 @@ func requireBodyMatchUser(t *testing.T, body *bytes.Buffer, user db.User) {
 		PasswordChangedAt: user.PasswordChangedAt,
 	}
 
-	var gotRes createUserResponse
+	var gotRes userResponse
 	err = json.Unmarshal(data, &gotRes)
 	require.NoError(t, err)
 

@@ -12,8 +12,8 @@ package mockdb
 import (
 	context "context"
 	reflect "reflect"
-
 	db "simplebank/db/sqlc"
+
 	gomock "go.uber.org/mock/gomock"
 )
 
