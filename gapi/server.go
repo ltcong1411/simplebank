@@ -2,6 +2,7 @@ package gapi
 
 import (
 	"fmt"
+
 	db "simplebank/db/sqlc"
 	"simplebank/pb"
 	"simplebank/token"
