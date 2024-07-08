@@ -27,6 +27,9 @@ migratedown1:
 new_migration:
 	migrate create -ext sql -dir db/migration -seq $(name)
 
+db_schema:
+	dbml2sql --postgres -o doc/schema.sql doc/db.dbml
+
 sqlc:
 	sqlc generate
 
@@ -55,4 +58,7 @@ evans:
 redis:
 	docker run --name redis --network bank-network -p 6379:6379 -d redis:7-alpine
 
-.PHONY: postgres createdb dropdb migrateup migratedown migrateup1 migratedown1 sqlc test server mock new_migration proto evans redis
+start_redis:
+	docker start redis
+
+.PHONY: postgres createdb dropdb migrateup migratedown migrateup1 migratedown1 sqlc test server mock new_migration db_schema proto evans redis start_redis
