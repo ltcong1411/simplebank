@@ -6,3 +6,14 @@ INSERT INTO verify_emails (
 ) VALUES (
     $1, $2, $3
 ) RETURNING *;
+
+-- name: UpdateVerifyEmail :one
+UPDATE verify_emails
+SET
+    in_used = TRUE
+WHERE
+    id = @id
+    AND secret_code = @secret_code
+    AND in_used = FALSE
+    AND expired_at > now()
+RETURNING *;
