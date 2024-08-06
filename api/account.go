@@ -1,7 +1,7 @@
 package api
 
 import (
-	"database/sql"
+	"errors"
 	"fmt"
 	"net/http"
 
@@ -33,7 +33,6 @@ func (server *Server) createAccount(ctx *gin.Context) {
 	account, err := server.store.CreateAccount(ctx, arg)
 	if err != nil {
 		if pqErr, ok := err.(*pq.Error); ok {
-			fmt.Println(pqErr.Code.Name())
 			switch pqErr.Code.Name() {
 			case "foreign_key_violation", "unique_violation":
 				ctx.JSON(http.StatusForbidden, errorResponse(err))
@@ -61,7 +60,7 @@ func (server *Server) getAccount(ctx *gin.Context) {
 
 	account, err := server.store.GetAccount(ctx, req.ID)
 	if err != nil {
-		if err == sql.ErrNoRows {
+		if errors.Is(err, db.ErrRecordNotFound)  {
 			ctx.JSON(http.StatusNotFound, errorResponse(err))
 			return
 		}
