@@ -9,7 +9,6 @@ import (
 	"simplebank/util"
 
 	"github.com/jackc/pgx/v5/pgxpool"
-	_ "github.com/lib/pq"
 )
 
 var testStore Store
