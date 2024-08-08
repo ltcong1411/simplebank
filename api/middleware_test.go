@@ -5,6 +5,7 @@ import (
 	"net/http"
 	"net/http/httptest"
 	"simplebank/token"
+	"simplebank/util"
 	"testing"
 	"time"
 
@@ -20,7 +21,7 @@ func addAuthorization(
 	username string,
 	duration time.Duration,
 ) {
-	token, payload, err := tokenMaker.CreateToken(username, duration)
+	token, payload, err := tokenMaker.CreateToken(username, util.DepositorRole, duration)
 	require.NoError(t, err)
 	require.NotEmpty(t, payload)
 
